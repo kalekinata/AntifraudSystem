@@ -12,8 +12,6 @@ insert into roles
 values  (uuid(), now(), 'ROLE_USER'),
         (@adm_role, now(), 'ROLE_ADMIN');
 
-select * from roles;
-
 create table users(
     id varchar(36) primary key,
     dadd datetime,
@@ -23,11 +21,9 @@ create table users(
     active bit
 );
 
-select * from users
-
 set @adm := uuid();
 
-insert into users values(@adm, now(), 'admin', 'rexhfnjd1234' , 1);
+insert into users values(@adm, now(), 'admin', '$2a$10$1fniNjjlA/oqQvvlw0ePX.vQ596cWxkZmqfFnim88m1/uVNhmZEcy' , 1);
 
 create table user_role(
     user_id varchar(36),
@@ -37,6 +33,3 @@ create table user_role(
 );
 
 insert into  user_role values (@adm, @adm_role)
-
-select * from users
-select * from user_role
